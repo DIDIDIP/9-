@@ -1,0 +1,160 @@
+/* 모든 페이지가 같이 쓰는 기본 스타일 (공용 파일이라 수정 전에 팀에 공유해 주세요)
+   개인 페이지 꾸미기는 members/<내 폴더>/style.css 에서 하면 됩니다. */
+:root {
+  --bg: #f7f6f2;
+  --surface: #ffffff;
+  --text: #1d1d1f;
+  --muted: #5f6368;
+  --line: #e3e1da;
+  --accent: #3b6cf6;
+  --accent-soft: color-mix(in srgb, var(--accent) 14%, var(--surface));
+  --radius: 16px;
+  --font: "Noto Sans KR", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121214;
+    --surface: #1c1c20;
+    --text: #f2f2f2;
+    --muted: #a0a0a8;
+    --line: #2c2c32;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.7;
+}
+
+a { color: var(--accent); }
+img { max-width: 100%; display: block; }
+
+.wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ---------- 상단 메뉴 ---------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.topbar .wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 56px;
+  overflow-x: auto;
+}
+.topbar .logo {
+  font-weight: 800;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.topbar nav { display: flex; gap: 4px; }
+.topbar nav a {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.topbar nav a:hover { color: var(--text); background: var(--surface); }
+.topbar nav a[aria-current="page"] { color: var(--accent); background: var(--accent-soft); font-weight: 700; }
+
+/* ---------- 홈 ---------- */
+.home-hero { padding: 72px 0 40px; }
+.home-hero h1 { font-size: clamp(32px, 6vw, 52px); line-height: 1.2; margin: 0 0 12px; }
+.home-hero p { color: var(--muted); font-size: 18px; margin: 0; }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 16px;
+  padding-bottom: 72px;
+}
+.card {
+  display: block;
+  padding: 24px 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-top: 6px solid var(--accent);
+  border-radius: var(--radius);
+  color: var(--text);
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08); }
+.card .emoji { font-size: 36px; }
+.card h2 { margin: 8px 0 4px; font-size: 20px; }
+.card p { margin: 0; color: var(--muted); font-size: 14px; }
+
+/* ---------- 개인 페이지 ---------- */
+.hero {
+  padding: 64px 0 40px;
+  text-align: center;
+}
+.hero .emoji { font-size: 64px; }
+.hero h1 { margin: 8px 0; font-size: clamp(30px, 6vw, 46px); }
+.hero .hobby {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 700;
+}
+.hero .intro { color: var(--muted); margin: 0; }
+
+.section {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.section h2 { margin: 0 0 12px; font-size: 20px; }
+.section h2::before { content: ""; display: inline-block; width: 6px; height: 18px; margin-right: 10px; border-radius: 3px; background: var(--accent); vertical-align: -2px; }
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+.gallery figure { margin: 0; }
+.gallery .placeholder,
+.gallery img {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.gallery .placeholder {
+  display: grid;
+  place-items: center;
+  background: var(--accent-soft);
+  color: var(--muted);
+  font-size: 14px;
+}
+.gallery figcaption { margin-top: 6px; font-size: 14px; color: var(--muted); }
+
+.footer {
+  padding: 40px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
