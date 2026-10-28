@@ -1,4 +1,4 @@
-# teamP 취미 아카이브
+﻿# teamP 취미 아카이브
 
 팀원 다섯 명이 각자 좋아하는 취미를 한 페이지씩 소개하는 정적 웹사이트입니다.
 HTML·CSS만 써서 빌드 과정이 없고, `index.html`을 브라우저로 열면 바로 보입니다.
@@ -32,8 +32,8 @@ teamP/
 ## 올리는 법 (Git)
 
 ```bash
-git clone https://github.com/DIDIDIP/teamP.git
-cd teamP
+git clone https://github.com/DIDIDIP/9-.git
+cd 9-
 git checkout -b 내이름        # 예: git checkout -b oh-sujin
 # ...자기 폴더 수정...
 git add members/내폴더 index.html
@@ -47,5 +47,5 @@ GitHub에서 **Pull request**를 만들면 팀장이 확인하고 합칩니다.
 ## 사이트 공개하기 (GitHub Pages)
 
 저장소 **Settings → Pages → Branch: `main` / `(root)` → Save**를 누르면
-몇 분 뒤 `https://dididip.github.io/teamP/`에서 볼 수 있습니다.
+몇 분 뒤 `https://dididip.github.io/9-/`에서 볼 수 있습니다.
 무료 계정은 저장소가 **Public**이어야 Pages를 켤 수 있습니다.
