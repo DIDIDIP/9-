@@ -1,12 +1,105 @@
 /* 이희용 페이지 전용 스타일. 이 파일은 마음대로 꾸며도 다른 팀원 페이지에 영향이 없습니다. */
 
 :root {
-  /* 대표 색 하나만 바꿔도 제목 장식, 취미 뱃지, 메뉴 강조색이 함께 바뀝니다 */
-  --accent: #3b6cf6;
+  /* 잔디 초록 */
+  --accent: #1f9d55;
+  --grass: #2e8b47;
+  --grass-dark: #277a3e;
 }
 
-/* 예시: 배경을 그라데이션으로 바꾸고 싶으면 주석을 풀어 보세요
 body {
   background: linear-gradient(180deg, var(--accent-soft), var(--bg) 480px);
 }
-*/
+
+.muted { color: var(--muted); margin-top: 0; }
+
+/* 히어로의 공이 살짝 튀어 오르는 효과 */
+.hero .ball { display: inline-block; animation: bounce 1.6s ease-in-out infinite; }
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(180deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero .ball { animation: none; }
+}
+
+/* ---------- 좋아하는 이유 카드 ---------- */
+.reasons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+.reason {
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+}
+.reason span { font-size: 28px; }
+.reason h3 { margin: 6px 0 4px; font-size: 17px; }
+.reason p { margin: 0; font-size: 15px; }
+
+/* ---------- 축구장 포메이션 ---------- */
+.pitch {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  max-width: 420px;
+  aspect-ratio: 3 / 4;
+  margin: 0 auto;
+  padding: 16px;
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+  /* 잔디 줄무늬 */
+  background: repeating-linear-gradient(180deg, var(--grass) 0 12.5%, var(--grass-dark) 12.5% 25%);
+}
+/* 하프라인과 센터서클 */
+.pitch::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  border-top: 2px solid rgba(255, 255, 255, 0.7);
+}
+.pitch::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 22%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+}
+.pitch .line {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-evenly;
+}
+.pitch span {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--grass-dark);
+  font-weight: 800;
+  font-size: 13px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+}
+.pitch .gk span { background: #ffd34d; color: #5a4300; }
+
+/* ---------- 추천 리스트 ---------- */
+.checklist { list-style: none; padding: 0; margin: 0; }
+.checklist li {
+  padding: 10px 0 10px 32px;
+  border-bottom: 1px dashed var(--line);
+  position: relative;
+}
+.checklist li:last-child { border-bottom: 0; }
+.checklist li::before { content: "⚽"; position: absolute; left: 0; }
+.checklist strong { margin-right: 6px; }
